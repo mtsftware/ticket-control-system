@@ -31,3 +31,7 @@ class KullaniciSerializer(serializers.ModelSerializer):
         instance.phone_number = validated_data.get('phone_number', instance.phone_number)
         instance.save()
         return instance
+class KullaniciLoginSerializer(serializers.Serializer):
+    class Meta:
+        model = Kullanici
+        fields = ['identity_no', 'password']
