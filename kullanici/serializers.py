@@ -4,8 +4,8 @@ from .models import *
 class KullaniciSerializer(serializers.ModelSerializer):
     class Meta:
         model = Kullanici
-        fields = ['id', 'identity_no', 'email', 'first_name', 'last_name', 'birth_date', 'phone_number', 'address', 'password', 'date_joined', 'last_login']
-        read_only_fields = ('id', 'date_joined', 'last_login')
+        fields = ['id', 'identity_no', 'email', 'first_name', 'last_name', 'birth_date', 'phone_number', 'address', 'password', 'date_joined', 'last_login', 'is_staff', 'is_superuser']
+        read_only_fields = ('id', 'date_joined', 'last_login', 'is_staff', 'is_superuser')
         extra_kwargs = {'password': {'write_only': True, 'required': True, 'min_length': 6, 'max_length': 6}}
     def validate_identity_no(self, value):
         if len(value) != 11 or not value.isdigit() or str(value)[0] == '0':
